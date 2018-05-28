@@ -1,7 +1,5 @@
-cook_book = {} # Задаем глобальную переменную - пустой словарь рецептов
-
-
 def get_cook_book():
+    cook_book = {}  # Задаем глобальную переменную - пустой словарь рецептов
     with open('cook_book.txt') as f:
         while True:
             dish_name = f.readline().lower().strip()  # Получили ключ словара - название блюда в нижнем регистре
