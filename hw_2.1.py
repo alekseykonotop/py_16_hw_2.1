@@ -4,18 +4,17 @@ def get_cook_book():
         while True:
             dish_name = f.readline().lower().strip()  # Получили ключ словара - название блюда в нижнем регистре
             if not dish_name:
-              break
+                break
             number_of_cycles = int(f.readline().strip())  # Получили кол-во строк для считывания ингредиентов в блюде
 
             ingredients_list = []  # Задали пустой словарь, куда будем складывать словари ingredient_dict
-            while number_of_cycles:
+            for _i in range(number_of_cycles):
                 ingredient_dict = {}
                 ingred_list = f.readline().strip().split(' | ')  # Получили список типа ['Яйцо', '2', 'шт;]
                 ingredient_dict['ingridient_name'] = ingred_list[0]
                 ingredient_dict['quantity'] = int(ingred_list[1])
                 ingredient_dict['measure'] = ingred_list[2]
-                ingredients_list = ingredients_list + [ingredient_dict]  # Добавили словарь ingredient_dict с список ingredients_list
-                number_of_cycles -= 1
+                ingredients_list.append(ingredient_dict)  # Добавили словарь ingredient_dict список ingredients_list
             f.readline() #  Сделали проход пустой строки
             cook_book[dish_name] = ingredients_list # сформировали словарь cook_book по конкретному dish_name
     return cook_book
